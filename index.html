@@ -1,1 +1,152 @@
-default
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Social Mobility Predictor</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Social Mobility Predictor">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Social Mobility Predictor</h1>
+    <h2>Developing Data Products - part 2</h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Social Mobility Predictor</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This shiny application implements a predictor of social mobility.<br>
+More precisely, given the social status of a father&#39;s occupation (input 1) it provides the probability of a given social status (also provided as input 2) of the son&#39;s occupation.<br>
+The Occupational Status is ranked on a scale from 1 to 8, where 1 is the highest social status and 8 the lowest.</p>
+
+<h2>Data Source</h2>
+
+<p>The table is part of the Base R datasets, included in the standard distribution of R.<br>
+The data are based on the cross-classification of a sample of British males according to each subject&#39;s occupational status and his father&#39;s occupational status (1949).
+Data Source: Goodman, L. A. (1979) Simple Models for the Analysis of Association in Cross-Classifications having Ordered Categories. J. Am. Stat. Assoc., 74 (367), 537-552</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Distribution</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Data show a strong correlation between the social status of the father and that of the son:</p>
+
+<pre><code class="r">os1&lt;-occupationalStatus/rowSums(occupationalStatus)
+par (mfrow = c(3,4)) #used 3 rows to force proper formatting
+for (i in 1:8)  {
+  plot(os1[i,], xlab=&quot;son&#39;s status distr.&quot;, ylab=paste(&quot;father&#39;s status&quot;,i), type=&quot;l&quot;)}
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Predictor</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The predictor allows to estimate (based on the available sample), the probability for a son to achieve e social status given the social status of his father.
+Two cursors on the left are available to select the social status and the response is provided on the main panel to the right.
+<img src="./assets/img/predictor.png" alt="plot of chunk unnamed-chunk-1"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>A Valuable Tool</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The use of such a tool allows for a quick estimate of the social mobility of an individual.<br>
+The expanded application, using a larger sample, with observations over time, will clearly show the general trends in social mobility and a finer subsetting of the data will provide valuable insights for analysists and decision makers.  </p>
+
+<h2>Get one</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Social Mobility Predictor'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Distribution'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Predictor'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='A Valuable Tool'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
